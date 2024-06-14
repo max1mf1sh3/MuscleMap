@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 
 export default function HomeScreen() {
     return (
@@ -19,5 +19,9 @@ const styles = StyleSheet.create({
         color: '#4c98cf',
         fontSize: 10,
     },
+    image: {
+        width: 300,
+        height: 300,
+    }
 });
   
