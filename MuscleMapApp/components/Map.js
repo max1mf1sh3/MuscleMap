@@ -3,9 +3,13 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function Map() {
     return(
-        <View style={styles.muscle}>
-            <Image style={styles.image2} source = {require('../assets/ako_shrug.jpg')} />
-            <Image style={styles.image1} source = {require('../assets/ako_shrug.jpg')} />
+        <View style={styles.map}>
+            <View style={styles.muscle}>
+                <Text>sample</Text>
+            </View>
+            <View style={styles.box}>
+                <Text>sample</Text>
+            </View>
         </View>
     );
 }
@@ -13,32 +17,28 @@ export default function Map() {
 // let us try absolute positioning
 
 const styles = StyleSheet.create({
-    muscle: {
+    map: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'column',
+        backgroundColor: '#4a201d',
+        padding: 20,
+        gap: 30,
+    },
+    muscle: {
+        flex: 3,
+        backgroundColor: '#ffffff',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    box: {
+        flex: 1,
+        backgroundColor: '#545454',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     text: {
         color: '#4c98cf',
-    },
-    image1: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        resizeMode: 'contain',
-        width: '50%',
-        height: '50%',
-    },
-    image2: {
-        transform: [ { scaleX: -1 } ],
-        position: 'absolute',
-        top: -20,
-        left: 20,
-        resizeMode: 'contain',
-        width: '100%',
-        height: '100%',
-        opacity: 0.6,
     },
 });
   

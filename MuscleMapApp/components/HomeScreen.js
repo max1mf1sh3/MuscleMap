@@ -12,11 +12,12 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     home: {
         flex: 1,
+        backgroundColor: '#4c98cf',
         alignItems: 'center',
         justifyContent: 'center',
     },
     text: {
-        color: '#4c98cf',
+        color: '#ffffff',
         fontSize: 10,
     },
     image: {
