@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image} from 'react-native';
 import CircularButton from './CircularButton';
+import {faRotate} from "@fortawesome/free-solid-svg-icons";
+
 
 
 export default function HomeScreen() {
     return (
         <View style={styles.home}>
             <Text style={styles.text}>welcome home dad</Text>
-            <CircularButton flip={() => console.log('cool beans')}/>
+            <CircularButton icon={faRotate} flip={() => console.log('cool beans')}/>
         </View>
     );
 }
