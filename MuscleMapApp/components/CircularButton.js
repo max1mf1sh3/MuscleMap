@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native';
 import * as React from 'react';
 import { StyleSheet, View, Pressable, Text } from "react-native";
 
@@ -19,8 +18,7 @@ const styles = StyleSheet.create({
         height: 100,
         backgroundColor: '#7076FC', 
     },
-
     button:{
-
+        flex: 1,
     },
 })
