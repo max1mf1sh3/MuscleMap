@@ -2,14 +2,16 @@ import * as React from 'react';
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-export default function CircularButton({icon, flip}){
+export default function CircularButton({icon, flip, pageStyle}){
     return (
-        <View style={styles.buttonContainer}>
-            <Pressable style={styles.button} onPress={flip}>
-                <View style={styles.iconContainer}>
-                    <FontAwesomeIcon icon={icon} size={50}/>
-                </View>
-            </Pressable>
+        <View style={pageStyle}>
+            <View style={styles.buttonContainer}>
+                <Pressable style={styles.button} onPress={flip}>
+                    <View style={styles.iconContainer}>
+                        <FontAwesomeIcon icon={icon} size={70}/>
+                    </View>
+                </Pressable>
+            </View>
         </View>
     )
 }
