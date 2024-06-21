@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import CircularButton from './CircularButton';
+import {faRotate} from "@fortawesome/free-solid-svg-icons";
 
 export default function Map() {
     return(
         <View style={styles.map}>
             <View style={styles.muscle}>
                 <Text>sample</Text>
+                <CircularButton icon={faRotate} flip={() => console.log('cool beans')}
+                 pageStyle={styles.button}/>
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
@@ -39,6 +43,11 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#4c98cf',
+    },
+    button: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
     },
 });
   
