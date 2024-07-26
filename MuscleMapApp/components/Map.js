@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import CircularButton from './CircularButton';
 import {faRotate} from "@fortawesome/free-solid-svg-icons";
-import DropBox from './DropBox';
+import DropdownComponent from './DropBox';
+import ExerciseList from './ExerciseLIst';
 
 export default function Map() {
     return(
@@ -14,7 +15,7 @@ export default function Map() {
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
-                <DropBox/>
+                <DropdownComponent/>
             </View>
         </View>
     );
