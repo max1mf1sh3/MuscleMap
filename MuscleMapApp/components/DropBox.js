@@ -1,88 +1,100 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from '@expo/vector-icons/AntDesign';
 
 
-const data = [
-  { label: 'Item 1', value: '1' },
-  { label: 'Item 2', value: '2' },
-  { label: 'Item 3', value: '3' },
-  { label: 'Item 4', value: '4' },
-  { label: 'Item 5', value: '5' },
-  { label: 'Item 6', value: '6' },
-  { label: 'Item 7', value: '7' },
-  { label: 'Item 8', value: '8' },
+const dataWeek = [
+  { label: 'Monday', value: 'Monday' },
+  { label: 'Tuesday', value: 'Tuesday' },
+  { label: 'Wednesday', value: 'Wednesday' },
+  { label: 'Thursday', value: 'Thursday' },
+  { label: 'Friday', value: 'Friday' },
+  { label: 'Saturday', value: 'Saturday' },
+  { label: 'Sunday', value: 'Sunday' },
 ];
 
-export default function DropdownComponent(){
+const dataExercise =[
+    {label: 'Bench', value: 'Bench'},
+];
+
+export default function DropdownComponent({styleType}){
   const [value, setValue] = useState(null);
 
   const renderItem = item => {
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
-        {item.value === value && (
-          <AntDesign
-            style={styles.icon}
-            color="black"
-            name="Safety"
-            size={20}
-          />
-        )}
+        {item.value === value}
       </View>
     );
   };
-
+  if (styleType == 'weekly') {
+    return (
+        <Dropdown
+          style={styles.dropdownWeek}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={dataWeek}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select"
+          searchPlaceholder="Search..."
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+          renderItem={renderItem}
+        />
+      );
+  }
+  if(styleType == 'exercise'){
   return (
     <Dropdown
-      style={styles.dropdown}
+      style={styles.dropdownExercise}
       placeholderStyle={styles.placeholderStyle}
       selectedTextStyle={styles.selectedTextStyle}
       inputSearchStyle={styles.inputSearchStyle}
       iconStyle={styles.iconStyle}
-      data={data}
+      data={dataExercise}
       search
       maxHeight={300}
       labelField="label"
       valueField="value"
-      placeholder="Select item"
+      placeholder="Select"
       searchPlaceholder="Search..."
       value={value}
       onChange={item => {
         setValue(item.value);
       }}
-      renderLeftIcon={() => (
-        <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
-      )}
       renderItem={renderItem}
     />
-  );
+  );}
 };
 
 
 const styles = StyleSheet.create({
-  dropdown: {
-    margin: 16,
-    height: 50,
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 2,
-  },
-  icon: {
-    marginRight: 5,
-  },
+    dropdownWeek: {
+        margin: 16,
+        height: 50,
+        width: 110,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+      },
+      dropdownExercise: {
+        margin: 16,
+        height: 50,
+        width: 200,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+      },
   item: {
-    padding: 17,
+    padding: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -96,10 +108,6 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
   },
   inputSearchStyle: {
     height: 40,

@@ -15,7 +15,7 @@ export default function Map() {
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
-                <DropdownComponent/>
+                <DropdownComponent styleType={'exercise'}/>
             </View>
         </View>
     );
@@ -53,5 +53,21 @@ const styles = StyleSheet.create({
         right: 20,
         opacity: 0.5,
     },
+    dropdown: {
+        margin: 16,
+        height: 50,
+        width: 110,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+      },
+      dropdownExercise: {
+        margin: 16,
+        height: 50,
+        width: 200,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+      },
 });
   
