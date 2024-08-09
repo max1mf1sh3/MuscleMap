@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button } from 'react-native';
 
-export default function HomeScreen() {
+export default function UserExercise() {
 
-  const [initialElements, changeEl]  = useState([
-    { id : "0", text : "Object 1"},
-    { id : "1", text : "Object 2"},
+  const [initialElements, newElements]  = useState([
   ]);
 
-  const [exampleState, setExampleState] = useState(initialElements);
-  const [idx, incr] = useState(2);
+  const [exList, setexList] = useState(initialElements);
+  const [idx, incr] = useState(0);
 
   const addElement = () => {
     var newArray = [...initialElements , {id : idx, text: "Object " + (idx+1) }];
     incr(idx + 1);
-    setExampleState(newArray);
-    changeEl(newArray);
+    setexList(newArray);
+    newElements(newArray);
   }
 
   return (
     <View style={styles.container}>
         <FlatList
             keyExtractor = {item => item.id}  
-            data={exampleState}
+            data={exList}
             renderItem = {item => (<Text>{item.item.text}</Text>)} />
         <Button
           title="Add element"
