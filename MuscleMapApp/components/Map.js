@@ -3,19 +3,20 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import CircularButton from './CircularButton';
 import {faRotate} from "@fortawesome/free-solid-svg-icons";
 import DropdownComponent from './DropBox';
-import ExerciseList from './ExerciseLIst';
+import UserExercise from './ExerciseLIst';
 
 export default function Map() {
     return(
         <View style={styles.map}>
             <View style={styles.muscle}>
                 <Text>sample</Text>
+                <UserExercise/>
                 <CircularButton icon={faRotate} flip={() => console.log('cool beans')}
                  pageStyle={styles.button}/>
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
-                <DropdownComponent styleType={'exercise'}/>
+                <DropdownComponent styleType={'weekly'}/>
             </View>
         </View>
     );

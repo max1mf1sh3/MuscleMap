@@ -1,37 +1,41 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { FlatList, Text, View, StyleSheet, Button } from 'react-native';
 
-export default function ExerciseList() {    
-    const [list, setList] = useState([]);
-    const [value, setValue] = useState("");
-    const [exerciseList, setExercise] = useState("");
+export default function HomeScreen() {
 
-    function addExercise(event){
-        setExercise(event.target.val);
-        let tempArr = list;
-        tempArr.push(value);
-        setList(tempArr);
-        setValue("");
-    }
+  const [initialElements, changeEl]  = useState([
+    { id : "0", text : "Object 1"},
+    { id : "1", text : "Object 2"},
+  ]);
 
-    return(
-        <div>
-            <div className="ExerciseDrop">
-                <select value={exerciseList} onChange={addExercise}>
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
-                </select>
-            </div>
-            <div className="UserExerciseList">
-                <ul>
-                    {list.length > 0 &&
-                    list.map((item, i) => <li onClick={() => deleteItem(i)}>{item} </li>)}
-                </ul>
-            </div>
-        </div>
-    )
+  const [exampleState, setExampleState] = useState(initialElements);
+  const [idx, incr] = useState(2);
+
+  const addElement = () => {
+    var newArray = [...initialElements , {id : idx, text: "Object " + (idx+1) }];
+    incr(idx + 1);
+    setExampleState(newArray);
+    changeEl(newArray);
+  }
+
+  return (
+    <View style={styles.container}>
+        <FlatList
+            keyExtractor = {item => item.id}  
+            data={exampleState}
+            renderItem = {item => (<Text>{item.item.text}</Text>)} />
+        <Button
+          title="Add element"
+          onPress={addElement} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    width: '100%',
+    borderWidth: 1
+  },
+});
