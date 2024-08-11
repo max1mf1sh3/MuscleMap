@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
+import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import CircularButton from './CircularButton';
 import {faRotate} from "@fortawesome/free-solid-svg-icons";
 import DropdownComponent from './DropBox';
 import UserExercise from './ExerciseLIst';
+import React, { useState } from 'react';
+
+
 
 export default function Map() {
+    const [value, setValue] = useState();
+
+    function addToList(arg_val) {
+        setValue(arg_val);
+    }
+
     return(
         <View style={styles.map}>
             <View style={styles.muscle}>
@@ -16,7 +25,7 @@ export default function Map() {
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
-                <DropdownComponent styleType={'weekly'}/>
+                <DropdownComponent styleType={'weekly'} value={value} addToList={addToList}/>
             </View>
         </View>
     );
