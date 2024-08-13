@@ -14,11 +14,25 @@ const dataWeek = [
 ];
 
 const dataExercise =[
-    {label: 'Bench', value: 'Bench'},
+    {label: 'Bench Press', value: 'Bench'},
+    {label: 'Squat', value: 'Squat'},
+    {label: 'Dead Lift', value: 'Deadlift'},
+    {label: 'Pull Up', value: 'Pullup'},
+    {label: 'Push Up', value: 'Pushup'},
+    {label: 'Dips', value: 'Dips'},
+    {label: 'Bicep Curls', value: 'BicepCurls'},
+    {label: 'Lateral Raises', value: 'LatRaise'},
+    {label: 'Chin Up', value: 'Chinup'},
+    {label: 'Incline Bench Press', value: 'InclineBench'},
+    {label: 'Decline Bench Press', value: 'DeclineBench'},
+    {label: 'Leg Press', value: 'LegPress'},
+    {label: 'Rows', value: 'Rows'},
+    {label: 'Sit Ups', value: 'SitUps'},
+    {label: 'Crunches', value: 'Crunches'},
 ];
 
-export default function DropdownComponent({styleType}){
-  const [value, setValue] = useState(null);
+export default function DropdownComponent({styleType, value, addToList}){
+  //const [value, setValue] = useState(null);
 
   const renderItem = item => {
     return (
@@ -45,7 +59,7 @@ export default function DropdownComponent({styleType}){
           searchPlaceholder="Search..."
           value={value}
           onChange={item => {
-            setValue(item.value);
+            addToList(item.value);
           }}
           renderItem={renderItem}
         />
@@ -68,7 +82,7 @@ export default function DropdownComponent({styleType}){
       searchPlaceholder="Search..."
       value={value}
       onChange={item => {
-        setValue(item.value);
+        addToList(item.value);
       }}
       renderItem={renderItem}
     />
