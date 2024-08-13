@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image} from 'react-native';
 export default function HomeScreen() {
     return (
         <View style={styles.home}>
-            <Text style={styles.text}>welcome home dad</Text>
+            <Text style={styles.text}>Welcome To Muscle Map</Text>
         </View>
     );
 }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#ffffff',
-        fontSize: 10,
+        fontSize: 36,
     },
     image: {
         width: 300,
