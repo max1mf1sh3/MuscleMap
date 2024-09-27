@@ -34,13 +34,12 @@ export default function Map() {
                  pageStyle={styles.button}/>
             </View>
             <View style={styles.box}>
-                <Text>sample</Text>
+                <Text>Select Routine</Text>
                 <DropdownComponent styleType={'weekly'} value={value} addToList={addToList}/>
             </View>
         </View>
     );
 }
-
 // let us try absolute positioning
 
 const styles = StyleSheet.create({
