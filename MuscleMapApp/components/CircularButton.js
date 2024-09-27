@@ -8,7 +8,7 @@ export default function CircularButton({icon, flip, pageStyle}){
             <View style={styles.buttonContainer}>
                 <Pressable style={styles.button} onPress={flip}>
                     <View style={styles.iconContainer}>
-                        <FontAwesomeIcon icon={icon} size={70}/>
+                        <FontAwesomeIcon icon={icon} size={50}/>
                     </View>
                 </Pressable>
             </View>
@@ -19,9 +19,9 @@ export default function CircularButton({icon, flip, pageStyle}){
 
 const styles = StyleSheet.create({
     buttonContainer:{
-        borderRadius: 100,
-        width: 100,
-        height: 100,
+        borderRadius: 75,
+        width: 75,
+        height: 75,
         backgroundColor: '#7076FC', 
     },
     button:{
