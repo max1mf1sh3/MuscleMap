@@ -11,7 +11,11 @@ import React, { useState } from 'react';
 export default function Map() {
     imgstate = 0;
     const [value, setValue] = useState();
+    const [ex_value, setEx_value] = useState();
     const [img, setImg] = useState(require('../assets/muscles_reference.png'));
+    function addToEx(arg_ex) {
+        setEx_value(arg_ex);
+    }
     function addToList(arg_val) {
         setValue(arg_val);
     }
@@ -29,7 +33,8 @@ export default function Map() {
         <View style={styles.map}>
             <View style={styles.muscle}>
                 <Image style={styles.image} source = {img} />
-                <UserExercise/>
+                <DropdownComponent styleType={'exercise'} value={ex_value} addToList={addToEx}/>
+                <UserExercise value={ex_value}/>
                 <CircularButton icon={faRotate} flip={() => flipImg()}
                  pageStyle={styles.button}/>
             </View>

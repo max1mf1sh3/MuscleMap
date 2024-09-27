@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button } from 'react-native';
 
-export default function UserExercise() {
+export default function UserExercise({value}) {
 
   const [initialElements, newElements]  = useState([
   ]);
@@ -10,10 +10,11 @@ export default function UserExercise() {
   const [idx, incr] = useState(0);
 
   const addElement = () => {
-    var newArray = [...initialElements , {id : idx, text: "Object " + (idx+1) }];
+    var newArray = [...initialElements , {id : idx, text: value + (idx+1) }];
     incr(idx + 1);
     setexList(newArray);
     newElements(newArray);
+    console.log(newArray);
   }
 
   return (
