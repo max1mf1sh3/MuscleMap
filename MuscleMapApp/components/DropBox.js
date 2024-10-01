@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-
+import Exercise from './Exercise';
 
 const dataWeek = [
   { label: 'Monday', value: 'Monday' },
@@ -14,9 +14,9 @@ const dataWeek = [
 ];
 
 const dataExercise =[
-    {label: 'Bench Press', value: 'Bench'},
-    {label: 'Squat', value: 'Squat'},
-    {label: 'Dead Lift', value: 'Deadlift'},
+    {label: 'Bench Press', value: new Exercise('Bench Press')},
+    {label: 'Squat', value: 54},
+    {label: 'Dead Lift', value: 3.999},
     {label: 'Pull Up', value: 'Pullup'},
     {label: 'Push Up', value: 'Pushup'},
     {label: 'Dips', value: 'Dips'},
@@ -29,6 +29,7 @@ const dataExercise =[
     {label: 'Rows', value: 'Rows'},
     {label: 'Sit Ups', value: 'SitUps'},
     {label: 'Crunches', value: 'Crunches'},
+    {label: 'Jump Rope', value: new Exercise('Jump Rope')},
 ];
 
 export default function DropdownComponent({styleType, value, addToList}){
@@ -38,7 +39,6 @@ export default function DropdownComponent({styleType, value, addToList}){
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
-        {item.value === value}
       </View>
     );
   };
@@ -57,7 +57,6 @@ export default function DropdownComponent({styleType, value, addToList}){
           valueField="value"
           placeholder="Select"
           searchPlaceholder="Search..."
-          value={value}
           onChange={item => {
             addToList(item.value);
           }}
@@ -80,7 +79,6 @@ export default function DropdownComponent({styleType, value, addToList}){
       valueField="value"
       placeholder="Select"
       searchPlaceholder="Search..."
-      value={value}
       onChange={item => {
         addToList(item.value);
       }}

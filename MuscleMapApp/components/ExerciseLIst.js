@@ -10,7 +10,7 @@ export default function UserExercise({value}) {
   const [idx, incr] = useState(0);
 
   const addElement = () => {
-    var newArray = [...initialElements , {id : idx, text: value + (idx+1) }];
+    var newArray = [...initialElements , {id : idx, text: value.name + (idx+1) }];
     incr(idx + 1);
     setexList(newArray);
     newElements(newArray);
