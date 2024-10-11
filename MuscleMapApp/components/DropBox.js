@@ -13,26 +13,7 @@ const dataWeek = [
   { label: 'Sunday', value: 'Sunday' },
 ];
 
-const dataExercise =[
-    {label: 'Bench Press', value: new Exercise('Bench Press')},
-    {label: 'Squat', value: 54},
-    {label: 'Dead Lift', value: 3.999},
-    {label: 'Pull Up', value: 'Pullup'},
-    {label: 'Push Up', value: 'Pushup'},
-    {label: 'Dips', value: 'Dips'},
-    {label: 'Bicep Curls', value: 'BicepCurls'},
-    {label: 'Lateral Raises', value: 'LatRaise'},
-    {label: 'Chin Up', value: 'Chinup'},
-    {label: 'Incline Bench Press', value: 'InclineBench'},
-    {label: 'Decline Bench Press', value: 'DeclineBench'},
-    {label: 'Leg Press', value: 'LegPress'},
-    {label: 'Rows', value: 'Rows'},
-    {label: 'Sit Ups', value: 'SitUps'},
-    {label: 'Crunches', value: 'Crunches'},
-    {label: 'Jump Rope', value: new Exercise('Jump Rope')},
-];
-
-export default function DropdownComponent({styleType, value, addToList}){
+export default function DropdownComponent({styleType, dataExercise, addToList}){
   //const [value, setValue] = useState(null);
 
   const renderItem = item => {

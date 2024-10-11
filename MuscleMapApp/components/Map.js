@@ -4,9 +4,27 @@ import CircularButton from './CircularButton';
 import {faRotate} from "@fortawesome/free-solid-svg-icons";
 import DropdownComponent from './DropBox';
 import UserExercise from './ExerciseLIst';
+import Exercise from './Exercise';
 import React, { useState } from 'react';
 
-
+const dataExercise =[
+    {label: 'Bench Press', value: new Exercise('Bench Press')},
+    {label: 'Squat', value: new Exercise('Squat')},
+    {label: 'Dead Lift', value: new Exercise('Dead Lift')},
+    {label: 'Pull Up', value: new Exercise('Pull Up')},
+    {label: 'Push Up', value: new Exercise('Push Up')},
+    {label: 'Dips', value: new Exercise('Dips')},
+    {label: 'Bicep Curls', value: new Exercise('Bicep Curls')},
+    {label: 'Lateral Raises', value: new Exercise('Lateral Raises')},
+    {label: 'Chin Up', value: new Exercise('Chin Up')},
+    {label: 'Incline Bench Press', value: new Exercise('Incline Bench Press')},
+    {label: 'Decline Bench Press', value: new Exercise('Decline Bench Press')},
+    {label: 'Leg Press', value: new Exercise('Leg Press')},
+    {label: 'Rows', value: new Exercise('Rows')},
+    {label: 'Sit Ups', value: new Exercise('Sit Ups')},
+    {label: 'Crunches', value: new Exercise('Crunches')},
+    {label: 'Jump Rope', value: new Exercise('Jump Rope')},
+];
 
 export default function Map() {
     imgstate = 0;
@@ -23,6 +41,7 @@ export default function Map() {
         if (imgstate == 0) {
             setImg(require('../assets/muscles_reference2.png'));
             imgstate = 1;
+            //dataExercise.push({label: "test", value: new Exercise("testing")});
         } else {
             setImg(require('../assets/muscles_reference.png'));
             imgstate = 0;
@@ -33,14 +52,14 @@ export default function Map() {
         <View style={styles.map}>
             <View style={styles.muscle}>
                 <Image style={styles.image} source = {img} />
-                <DropdownComponent styleType={'exercise'} value={ex_value} addToList={addToEx}/>
+                <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
                 <UserExercise value={ex_value}/>
                 <CircularButton icon={faRotate} flip={() => flipImg()}
                  pageStyle={styles.button}/>
             </View>
             <View style={styles.box}>
                 <Text>sample</Text>
-                <DropdownComponent styleType={'weekly'} value={value} addToList={addToList}/>
+                <DropdownComponent styleType={'weekly'} addToList={addToList}/>
             </View>
         </View>
     );
