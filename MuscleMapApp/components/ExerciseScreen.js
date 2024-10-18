@@ -24,6 +24,7 @@ const dataExercise =[
     {label: 'Jump Rope', value: new Exercise('Jump Rope')},
 ];
 
+
 export default function ExerciseScreen() {
     const [ex_value, setEx_value] = useState();
     function addToEx(arg_ex) {
@@ -34,7 +35,7 @@ export default function ExerciseScreen() {
         <View style={styles.map}>
             <View style={styles.muscle}>
                 <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
-                <UserExercise value={ex_value}/>
+                <UserExercise value={ex_value} />
             </View>
         </View>
     );
@@ -61,6 +62,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         borderRadius: 30,
+    },
+    routineButton:{
+        flex: 1,
     },
 });
   

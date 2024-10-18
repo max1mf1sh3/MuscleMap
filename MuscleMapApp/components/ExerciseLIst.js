@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FlatList, Text, View, StyleSheet, Button } from 'react-native';
+import { FlatList, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Alert } from 'react-native';
 
 export default function UserExercise({value}) {
-
   const [initialElements, newElements]  = useState([
   ]);
 
@@ -15,17 +15,44 @@ export default function UserExercise({value}) {
     setexList(newArray);
     newElements(newArray);
     console.log(newArray);
-  }
+  };
+
+  const newRoutine = () =>{
+    var newArray = ([]);
+    setexList(newArray);
+    newElements(newArray);
+    incr(0);
+    Alert.prompt(
+      "Creating new Routine",
+      "Enter a name for your routine",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel routine"),
+          style: "cancel"
+        },
+        {
+          text: "Confirm",
+          onPress: () => console.log("Confirmed name"),
+        },
+      ],
+      "plain-text"
+    );
+  };
 
   return (
     <View style={styles.container}>
         <FlatList
-            keyExtractor = {item => item.id}  
             data={exList}
-            renderItem = {item => (<Text>{item.item.text}</Text>)} />
+            renderItem = {item => (<Text>{item.item.text}</Text>)}
+            keyExtractor = {item => item.id} />
         <Button
           title="Add element"
           onPress={addElement} />
+          <Button
+            title='Select Routine'
+            onPress={newRoutine}
+          />
     </View>
   );
 }
