@@ -4,7 +4,7 @@
 export default class Exercise {
     constructor(name) {
         this.name = name;
-        this.reps = 0;
+        this.reps = 1;
         this.weight = 0;
         this.duration = 0;
     }

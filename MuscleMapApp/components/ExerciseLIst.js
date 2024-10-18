@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Alert } from 'react-native';
+import Exercise from './Exercise';
 
 export default function UserExercise({value}) {
   const [initialElements, newElements]  = useState([
@@ -10,11 +11,23 @@ export default function UserExercise({value}) {
   const [idx, incr] = useState(0);
 
   const addElement = () => {
-    var newArray = [...initialElements , {id : idx, text: value.name + (idx+1) }];
-    incr(idx + 1);
-    setexList(newArray);
-    newElements(newArray);
-    console.log(newArray);
+    if (value instanceof Exercise) {
+      var newArray = [...initialElements , {id : idx, text: value.name, value: value}];
+      incr(idx + 1);
+      setexList(newArray);
+      newElements(newArray);
+      console.log(newArray);
+    }
+  };
+
+  const renderExercise = item => {
+    return(
+      <View padding = {2}>
+        <View backgroundColor='#ade9ff' borderWidth={1} borderRadius={4} padding={5}>
+          <Text>{item.item.text}</Text>
+        </View>
+      </View>
+    );
   };
 
   const newRoutine = () =>{
@@ -44,7 +57,7 @@ export default function UserExercise({value}) {
     <View style={styles.container}>
         <FlatList
             data={exList}
-            renderItem = {item => (<Text>{item.item.text}</Text>)}
+            renderItem = {item => renderExercise(item)}
             keyExtractor = {item => item.id} />
         <Button
           title="Add element"
