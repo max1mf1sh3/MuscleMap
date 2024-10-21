@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Alert } from 'react-native';
 import Exercise from './Exercise';
+import SmallButton from './SmallButton';
+import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 
 export default function UserExercise({value}) {
   const [initialElements, newElements]  = useState([
@@ -12,7 +14,7 @@ export default function UserExercise({value}) {
 
   const addElement = () => {
     if (value instanceof Exercise) {
-      var newArray = [...initialElements , {id : idx, text: value.name, value: value}];
+      var newArray = [...initialElements , {id : idx, text: value.name, value: new Exercise(value.name)}];
       incr(idx + 1);
       setexList(newArray);
       newElements(newArray);
@@ -20,11 +22,16 @@ export default function UserExercise({value}) {
     }
   };
 
+  // for some reason, item refers to the most recently added object, and not the exercise we are rendering?
   const renderExercise = item => {
+    obj = item.item
     return(
-      <View padding = {2}>
-        <View backgroundColor='#ade9ff' borderWidth={1} borderRadius={4} padding={5}>
-          <Text>{item.item.text}</Text>
+      <View padding={2}>
+        <View style={styles.exercise}>
+          <Text flex={2}>{obj.text}</Text>
+          <SmallButton flex={1} icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
+          <Text flex={1}>{obj.value.reps}</Text>
+          <SmallButton flex={1} icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
         </View>
       </View>
     );
@@ -76,5 +83,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
     borderWidth: 1
+  },
+  exercise: {
+    flex: 1,
+    backgroundColor: '#ade9ff',
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 15,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
 });
