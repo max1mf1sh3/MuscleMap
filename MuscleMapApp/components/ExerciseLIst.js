@@ -82,15 +82,11 @@ export default function UserExercise({value}) {
       <View style={styles.addElementButton}>
           <Button
             title="Add element"
-            //Comment out color of the buttons to fix web version where the
-            //entire button itself turns white instead of just the text
-            color="#fff"
             onPress={addElement} />
         </View>
         <View style = {styles.newRoutineButton}>
           <Button
             title='Select Routine'
-            color='#fff'
             onPress={newRoutine}/>
         </View>
     </View>
@@ -105,8 +101,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    width: "100%%",
+    backgroundColor: '#ffffff',
+    width: "100%",
     borderWidth: 1,
   },
   addElementButton: {
