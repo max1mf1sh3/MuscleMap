@@ -28,19 +28,19 @@ export default function UserExercise({value}) {
     return(
       <View padding={2}>
         <View style={styles.exercise}>
-          <Text flex={2}>{obj.text}</Text>
+          <Text flex={2} style={styles.exercisetext}>{obj.text}</Text>
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Reps</Text>
-            <View flex={1} flexDirection={'row'}>
-              <SmallButton flex={1} icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
-              <Text flex={1}>{obj.value.reps}</Text>
-              <SmallButton flex={1} icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
+            <View style={styles.subbox}>
+              <SmallButton icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
+              <Text style={styles.valuetext}>{obj.value.reps}</Text>
+              <SmallButton icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
             </View>
           </View>
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Weight</Text>
-            <View flex={1} flexDirection={'row'}>
-              <Text flex={1}>{obj.value.weight}</Text>
+            <View style={styles.subbox}>
+              <Text style={styles.valuetext}>{obj.value.weight}</Text>
             </View>
           </View>
         </View>
@@ -104,4 +104,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  exercisetext: {
+    fontSize: 20,
+  },
+  subbox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  valuetext: {
+    flex:1,
+    textAlignVertical: "center",
+    textAlign: "center",
+  }
 });
