@@ -72,28 +72,52 @@ export default function UserExercise({value}) {
   };
 
   return (
-    <View style={styles.container}>
-        <FlatList
-            data={exList}
-            renderItem = {item => renderExercise(item)}
-            keyExtractor = {item => item.id} />
-        <Button
-          title="Add element"
-          onPress={addElement} />
+    <View style={styles.largeContainer}>
+      <View style={styles.container}>
+          <FlatList
+              data={exList}
+              renderItem = {item => renderExercise(item)}
+              keyExtractor = {item => item.id} />
+      </View>
+      <View style={styles.addElementButton}>
+          <Button
+            title="Add element"
+            //Comment out color of the buttons to fix web version where the
+            //entire button itself turns white instead of just the text
+            color="#fff"
+            onPress={addElement} />
+        </View>
+        <View style = {styles.newRoutineButton}>
           <Button
             title='Select Routine'
-            onPress={newRoutine}
-          />
+            color='#fff'
+            onPress={newRoutine}/>
+        </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  largeContainer:{
+    flex: 1,
+    width: "100%",
+    backgroundColor: '#4c98cf',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    width: '100%',
-    borderWidth: 1
+    width: "100%%",
+    borderWidth: 1,
+  },
+  addElementButton: {
+    backgroundColor: '#4c98cf',
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  newRoutineButton: {
+    backgroundColor: '#4c98cf',
+    borderRadius: 10,
+    borderWidth: 1,
   },
   exercise: {
     flex: 1,
