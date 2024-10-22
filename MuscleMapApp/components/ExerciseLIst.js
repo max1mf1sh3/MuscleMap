@@ -24,14 +24,25 @@ export default function UserExercise({value}) {
 
   // for some reason, item refers to the most recently added object, and not the exercise we are rendering?
   const renderExercise = item => {
-    obj = item.item
+    const obj = item.item
     return(
       <View padding={2}>
         <View style={styles.exercise}>
           <Text flex={2}>{obj.text}</Text>
-          <SmallButton flex={1} icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
-          <Text flex={1}>{obj.value.reps}</Text>
-          <SmallButton flex={1} icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
+          <View flex={2} flexDirection={'column'} alignItems={'center'}>
+            <Text flex={2}>Reps</Text>
+            <View flex={1} flexDirection={'row'}>
+              <SmallButton flex={1} icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
+              <Text flex={1}>{obj.value.reps}</Text>
+              <SmallButton flex={1} icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
+            </View>
+          </View>
+          <View flex={2} flexDirection={'column'} alignItems={'center'}>
+            <Text flex={2}>Weight</Text>
+            <View flex={1} flexDirection={'row'}>
+              <Text flex={1}>{obj.value.weight}</Text>
+            </View>
+          </View>
         </View>
       </View>
     );
@@ -91,6 +102,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 15,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
 });
