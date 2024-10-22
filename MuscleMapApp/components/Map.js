@@ -53,7 +53,6 @@ export default function Map() {
             <View style={styles.muscle}>
                 <Image style={styles.image} source = {img} />
                 <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
-                <UserExercise value={ex_value}/>
                 <CircularButton icon={faRotate} flip={() => flipImg()}
                  pageStyle={styles.button}/>
             </View>
