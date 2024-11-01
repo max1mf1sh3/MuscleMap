@@ -51,7 +51,7 @@ export default function UserExercise({value}) {
           </View>
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Weight</Text>
-            <View style={styles.subbox}>
+            <View style={styles.weightbox} borderRadius={3}>
               <TextInput
                 onChangeText={obj.value.setWeight}
                 value={obj.value.weight}
@@ -149,6 +149,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  weightbox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: '66%',
   },
   valuetext: {
     flex:1,
