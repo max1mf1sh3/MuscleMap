@@ -96,12 +96,11 @@ export default function UserExercise({value}) {
   return (
     <View style={styles.largeContainer}>
       <View style={styles.container}>
-        <ScrollView keyboardDismissMode='none'>
           <FlatList
               data={exList}
               renderItem = {item => renderExercise(item)}
-              keyExtractor = {item => item.id} />
-        </ScrollView>
+              keyExtractor = {item => item.id}
+              removeClippedSubviews={false} />
       </View>
       <View style={styles.addElementButton}>
           <Button
