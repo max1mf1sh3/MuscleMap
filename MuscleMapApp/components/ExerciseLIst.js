@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { Alert, TextInput } from 'react-native';
+import { Alert, TextInput, ScrollView } from 'react-native';
 import Exercise from './Exercise';
 import SmallButton from './SmallButton';
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 export default function UserExercise({value}) {
   const [initialElements, newElements]  = useState([
@@ -52,12 +53,16 @@ export default function UserExercise({value}) {
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Weight</Text>
             <View style={styles.weightbox} borderRadius={3}>
-              <TextInput
-                onChangeText={obj.value.setWeight}
-                value={obj.value.weight}
-                placeholder="0"
-                keyboardType="numeric"
-              />
+              <SafeAreaProvider>
+                <SafeAreaView>
+                  <TextInput
+                    onChangeText={obj.value.setWeight}
+                    value={obj.value.weight}
+                    placeholder="0"
+                    keyboardType="numeric"
+                  />
+                </SafeAreaView>
+              </SafeAreaProvider>
             </View>
           </View>
         </View>
@@ -91,10 +96,12 @@ export default function UserExercise({value}) {
   return (
     <View style={styles.largeContainer}>
       <View style={styles.container}>
+        <ScrollView keyboardDismissMode='none'>
           <FlatList
               data={exList}
               renderItem = {item => renderExercise(item)}
               keyExtractor = {item => item.id} />
+        </ScrollView>
       </View>
       <View style={styles.addElementButton}>
           <Button
