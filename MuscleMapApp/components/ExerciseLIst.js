@@ -64,7 +64,8 @@ export default function UserExercise({value}) {
         },
         {
           text: "Confirm",
-          onPress: () => console.log("Confirmed name"),
+          onPress: (name) => console.log("Confirmed name: " + name),
+          
         },
       ],
       "plain-text"
