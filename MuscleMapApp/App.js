@@ -7,11 +7,29 @@ import HomeScreen from './components/HomeScreen';
 import Map from './components/Map';
 import ExerciseScreen from './components/ExerciseScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 
 const Tab = createBottomTabNavigator();
 
+SplashScreen.preventAutoHideAsync();
+
 const TabNavigator = () => {
+  const [loaded, error] = useFonts({
+    'Inter-Black': require('./assets/fonts/Inter-Black.otf'),
+  });
+
+  React.useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <Tab.Navigator
       screenOptions={{

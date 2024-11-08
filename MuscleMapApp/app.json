@@ -1,5 +1,13 @@
 {
   "expo": {
+    "plugins": [
+      [
+      "expo-font",
+        {
+          "fonts": ["./assets/fonts/Inter-Black.otf"]
+        }
+      ]
+    ],
     "name": "MuscleMap",
     "slug": "MuscleMap",
     "version": "1.0.0",

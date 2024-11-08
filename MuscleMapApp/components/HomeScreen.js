@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#ffffff',
         fontSize: 50,
+        fontFamily: "Inter-Black"
     },
     image: {
         width: 300,

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FlatList, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { Alert } from 'react-native';
+import { Alert, TextInput, ScrollView } from 'react-native';
 import Exercise from './Exercise';
 import SmallButton from './SmallButton';
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 export default function UserExercise({value}) {
   const [initialElements, newElements]  = useState([
@@ -22,9 +23,21 @@ export default function UserExercise({value}) {
     }
   };
 
+  const [nothing, setReps] = useState(1);
+  //this doesnt actually do anything, but calling a set function causes the component to re-render
+
   // for some reason, item refers to the most recently added object, and not the exercise we are rendering?
   const renderExercise = item => {
-    const obj = item.item
+    const obj = item.item;
+
+    const addRep = (ex) => {
+      ex.set_reps(ex.reps+1);
+      setReps(ex.reps);
+    }
+    const subRep = (ex) => {
+      ex.set_reps(ex.reps-1);
+      setReps(ex.reps);
+    }
     return(
       <View padding={2}>
         <View style={styles.exercise}>
@@ -32,15 +45,24 @@ export default function UserExercise({value}) {
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Reps</Text>
             <View style={styles.subbox}>
-              <SmallButton icon={faMinus} flip={() => obj.value.set_reps(obj.value.reps-1)} size={20} iconsize={15}/>
+              <SmallButton icon={faMinus} flip={() => subRep(obj.value)} size={25} iconsize={15}/>
               <Text style={styles.valuetext}>{obj.value.reps}</Text>
-              <SmallButton icon={faPlus} flip={() => obj.value.set_reps(obj.value.reps+1)} size={20} iconsize={15}/>
+              <SmallButton icon={faPlus} flip={() => addRep(obj.value)} size={25} iconsize={15}/>
             </View>
           </View>
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Weight</Text>
-            <View style={styles.subbox}>
-              <Text style={styles.valuetext}>{obj.value.weight}</Text>
+            <View style={styles.weightbox} borderRadius={3}>
+              <SafeAreaProvider>
+                <SafeAreaView>
+                  <TextInput
+                    onChangeText={obj.value.setWeight}
+                    value={obj.value.weight}
+                    placeholder="0"
+                    keyboardType="numeric"
+                  />
+                </SafeAreaView>
+              </SafeAreaProvider>
             </View>
           </View>
         </View>
@@ -78,7 +100,8 @@ export default function UserExercise({value}) {
           <FlatList
               data={exList}
               renderItem = {item => renderExercise(item)}
-              keyExtractor = {item => item.id} />
+              keyExtractor = {item => item.id}
+              removeClippedSubviews={false} />
       </View>
       <View style={styles.addElementButton}>
           <Button
@@ -133,6 +156,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  weightbox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: '66%',
   },
   valuetext: {
     flex:1,
