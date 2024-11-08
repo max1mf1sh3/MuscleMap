@@ -5,6 +5,8 @@ import Exercise from './Exercise';
 import SmallButton from './SmallButton';
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import Dialog from "react-native-dialog";
+
 
 export default function UserExercise({value}) {
   const [initialElements, newElements]  = useState([
@@ -12,6 +14,9 @@ export default function UserExercise({value}) {
 
   const [exList, setexList] = useState(initialElements);
   const [idx, incr] = useState(0);
+
+  const [visible, setVisible] = useState(false);
+  const [currName, newName] = useState("Routine");
 
   const addElement = () => {
     if (value instanceof Exercise) {
@@ -21,8 +26,7 @@ export default function UserExercise({value}) {
       newElements(newArray);
       console.log(newArray);
     }
-  };
-
+  };  
   const [nothing, setReps] = useState(1);
   //this doesnt actually do anything, but calling a set function causes the component to re-render
 
@@ -71,27 +75,20 @@ export default function UserExercise({value}) {
   };
 
   const newRoutine = () =>{
+    setVisible(true);
+  };
+  
+  const handleCancel = () => {
+    setVisible(false);
+    console.log(currName);
+  };
+
+  const handleConfirm = () => {
+    setVisible(false);
     var newArray = ([]);
     setexList(newArray);
     newElements(newArray);
     incr(0);
-    Alert.prompt(
-      "Creating new Routine",
-      "Enter a name for your routine",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel routine"),
-          style: "cancel"
-        },
-        {
-          text: "Confirm",
-          onPress: (name) => console.log("Confirmed name: " + name),
-          
-        },
-      ],
-      "plain-text"
-    );
   };
 
   return (
@@ -112,6 +109,13 @@ export default function UserExercise({value}) {
           <Button
             title='Select Routine'
             onPress={newRoutine}/>
+            <Dialog.Container visible={visible} onBackdropPress={handleCancel}>
+              <Dialog.Title>New Routine</Dialog.Title>
+              <Dialog.Description>Enter a name for your new routine.</Dialog.Description>
+              <Dialog.Input onChangeText={(name)=>newName(name)}/>
+              <Dialog.Button label="Confirm" onPress={handleConfirm}/>  
+              <Dialog.Button label="Cancel" onPress={handleCancel}/>
+            </Dialog.Container>
         </View>
     </View>
   );
