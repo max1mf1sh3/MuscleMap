@@ -57,16 +57,12 @@ export default function UserExercise({value}) {
           <View flex={2} flexDirection={'column'} alignItems={'center'}>
             <Text flex={2}>Weight</Text>
             <View style={styles.weightbox} borderRadius={3}>
-              <SafeAreaProvider>
-                <SafeAreaView>
-                  <TextInput
-                    onChangeText={obj.value.setWeight}
-                    value={obj.value.weight}
-                    placeholder="0"
-                    keyboardType="numeric"
-                  />
-                </SafeAreaView>
-              </SafeAreaProvider>
+              <TextInput
+                onChangeText={obj.value.setWeight}
+                value={obj.value.weight}
+                placeholder="0"
+                keyboardType="numeric"
+              />
             </View>
           </View>
         </View>
