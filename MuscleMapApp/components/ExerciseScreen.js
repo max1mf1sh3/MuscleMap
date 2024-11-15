@@ -4,6 +4,15 @@ import DropdownComponent from './DropBox';
 import UserExercise from './ExerciseLIst';
 import Exercise from './Exercise';
 import React, { useState } from 'react';
+import RoutineScreen from './RoutineSelect';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const MyStack = createStackNavigator({
+  screens: {
+    Home: ExerciseScreen,
+    Routine: RoutineScreen,
+  },
+});
 
 const dataExercise =[
     {label: 'Bench Press', value: new Exercise('Bench Press')},

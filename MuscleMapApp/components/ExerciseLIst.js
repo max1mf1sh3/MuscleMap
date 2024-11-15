@@ -9,11 +9,11 @@ import Dialog from "react-native-dialog";
 
 
 export default function UserExercise({value}) {
-  const [initialElements, newElements]  = useState([
-  ]);
-
+  const [initialElements, newElements]  = useState([]);
   const [exList, setexList] = useState(initialElements);
   const [idx, incr] = useState(0);
+
+  const[initialRoutines, addedRoutine] = useState([]);
 
   const [visible, setVisible] = useState(false);
   const [currName, newName] = useState("Routine");
