@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const MyStack = createStackNavigator({
   screens: {
-    Home: ExerciseScreen,
+    Exercise: ExerciseScreen,
     Routine: RoutineScreen,
   },
 });
@@ -46,6 +46,9 @@ export default function ExerciseScreen() {
                 <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
                 <UserExercise value={ex_value} />
             </View>
+            <Button 
+                onPress={navigation.replace('Routine', { owner : 'Exercise'})}
+                title = 'TESTING'/>
         </View>
     );
 }
