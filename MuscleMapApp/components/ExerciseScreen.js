@@ -28,7 +28,6 @@ const dataExercise =[
 
 
 export default function ExerciseScreen() {
-    const navigation = useNavigation();
     const [ex_value, setEx_value] = useState();
     function addToEx(arg_ex) {
         setEx_value(arg_ex);

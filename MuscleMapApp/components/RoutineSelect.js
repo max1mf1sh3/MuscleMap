@@ -12,6 +12,8 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 
 export default function RoutineScreen () {
+    const navigation = useNavigation();
+
     const [currName, newName] = useState("Routine");
     const [visible, setVisible] = useState(false);
 
