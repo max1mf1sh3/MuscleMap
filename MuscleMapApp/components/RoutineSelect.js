@@ -4,24 +4,24 @@ import DropdownComponent from './DropBox';
 import UserExercise from './ExerciseLIst';
 import Exercise from './Exercise';
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const dataExercise =[
     {label: 'YES', value: new Exercise('Bench Press')},
 ];
 
 
-export default function RoutineScreen() {
+export default function RoutineScreen () {
+    const navigation = useNavigation();
     const [ex_value, setEx_value] = useState();
     function addToEx(arg_ex) {
         setEx_value(arg_ex);
     }
 
     return(
-        <View style={styles.map}>
-            <View style={styles.muscle}>
-                <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
-                <UserExercise value={ex_value} />
-            </View>
+        <View>
+            <Text>TESTING TESTING</Text>
+            
         </View>
     );
 }

@@ -4,15 +4,8 @@ import DropdownComponent from './DropBox';
 import UserExercise from './ExerciseLIst';
 import Exercise from './Exercise';
 import React, { useState } from 'react';
-import RoutineScreen from './RoutineSelect';
-import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
-const MyStack = createStackNavigator({
-  screens: {
-    Exercise: ExerciseScreen,
-    Routine: RoutineScreen,
-  },
-});
 
 const dataExercise =[
     {label: 'Bench Press', value: new Exercise('Bench Press')},
@@ -35,6 +28,7 @@ const dataExercise =[
 
 
 export default function ExerciseScreen() {
+    const navigation = useNavigation();
     const [ex_value, setEx_value] = useState();
     function addToEx(arg_ex) {
         setEx_value(arg_ex);
@@ -47,8 +41,8 @@ export default function ExerciseScreen() {
                 <UserExercise value={ex_value} />
             </View>
             <Button 
-                onPress={navigation.replace('Routine', { owner : 'Exercise'})}
-                title = 'TESTING'/>
+                title="Routine" 
+                onPress={() => navigation.navigate("Routine")}/>
         </View>
     );
 }

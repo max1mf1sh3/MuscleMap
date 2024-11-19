@@ -9,6 +9,7 @@ import ExerciseScreen from './components/ExerciseScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import ScreenStack from './components/ExerciseRoutineStack';
 
 
 const Tab = createBottomTabNavigator();
@@ -52,14 +53,15 @@ const TabNavigator = () => {
       }}
       name="Muscle Map"
       component={Map} />
-    <Tab.Screen
+    <Tab.Screen 
       options={{
+        headerShown : false,
         tabBarIcon: ({focused, color, size}) => {
           return <Ionicons name="barbell-outline" size={size} color={focused ? "#4c98cf" : "black"} />;
         },
       }}
-      name="Exercises"
-      component={ExerciseScreen} />
+      name="Exercise"
+      component={ScreenStack} />
     </Tab.Navigator>
   );
 };
@@ -67,7 +69,7 @@ const TabNavigator = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <TabNavigator/>
     </NavigationContainer>
   );
