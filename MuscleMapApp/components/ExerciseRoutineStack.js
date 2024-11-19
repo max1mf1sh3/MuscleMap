@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export default function ScreenStack() {
     return (
         <NavigationContainer independent={true}>
-            <Stack.Navigator initialRouteName = "Exercise">
+            <Stack.Navigator initialRouteName = "Routine">
                 <Stack.Screen 
                     options={{headerStyle : {height: 98}}}
                     name="Exercise" 

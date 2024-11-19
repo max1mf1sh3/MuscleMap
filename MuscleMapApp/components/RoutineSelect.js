@@ -5,51 +5,56 @@ import UserExercise from './ExerciseLIst';
 import Exercise from './Exercise';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import Dialog from "react-native-dialog";
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
-const dataExercise =[
-    {label: 'YES', value: new Exercise('Bench Press')},
-];
+
 
 
 export default function RoutineScreen () {
-    const navigation = useNavigation();
-    const [ex_value, setEx_value] = useState();
-    function addToEx(arg_ex) {
-        setEx_value(arg_ex);
-    }
+    const [currName, newName] = useState("Routine");
+    const [visible, setVisible] = useState(false);
+
+    
+    const newRoutine = () =>{
+        setVisible(true);
+      };
+    const handleCancel = () => {
+        setVisible(false);
+        console.log(currName);
+      };
+      const handleConfirm = () => {
+        setVisible(false);
+      };
 
     return(
         <View>
-            <Text>TESTING TESTING</Text>
-            
+            <Text> TESTING STILL </Text>
+            <View style = {styles.newRoutineButton}>
+          <Button
+            title='Select Routine'
+            onPress={newRoutine}/>
+            <Dialog.Container visible={visible} onBackdropPress={handleCancel}>
+              <Dialog.Title>New Routine</Dialog.Title>
+              <Dialog.Description>Enter a name for your new routine.</Dialog.Description>
+              <Dialog.Input onChangeText={(name)=>newName(name)}/>
+              <Dialog.Button label="Confirm" onPress={handleConfirm}/>  
+              <Dialog.Button label="Cancel" onPress={handleCancel}/>
+            </Dialog.Container>
+        </View>
+            <Button 
+                title="Exercise" 
+                onPress={() => navigation.navigate("Exercise")}/>
         </View>
     );
 }
 
 
 const styles = StyleSheet.create({
-    image:{
-        flex: 4,
-        width: '60%',
-        height: '60%',
-    },
-    map: {
-        flex: 1,
-        justifyContent: 'center',
-        flexDirection: 'column',
-        backgroundColor: '#483c63',
-        padding: 20,
-        gap: 30,
-    },
-    muscle: {
-        flex: 3,
-        backgroundColor: '#d5d3db',
-        flexDirection: 'column',
-        alignItems: 'center',
-        borderRadius: 30,
-    },
-    routineButton:{
-        flex: 1,
+    newRoutineButton: {
+        backgroundColor: '#4c98cf',
+        borderRadius: 10,
+        borderWidth: 1,
     },
 });
   

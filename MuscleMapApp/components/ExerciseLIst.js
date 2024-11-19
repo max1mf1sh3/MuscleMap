@@ -5,7 +5,6 @@ import Exercise from './Exercise';
 import SmallButton from './SmallButton';
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import Dialog from "react-native-dialog";
 
 
 export default function UserExercise({value}) {
@@ -15,8 +14,6 @@ export default function UserExercise({value}) {
 
   const[initialRoutines, addedRoutine] = useState([]);
 
-  const [visible, setVisible] = useState(false);
-  const [currName, newName] = useState("Routine");
 
   const addElement = () => {
     if (value instanceof Exercise) {
@@ -69,23 +66,7 @@ export default function UserExercise({value}) {
       </View>
     );
   };
-
-  const newRoutine = () =>{
-    setVisible(true);
-  };
   
-  const handleCancel = () => {
-    setVisible(false);
-    console.log(currName);
-  };
-
-  const handleConfirm = () => {
-    setVisible(false);
-    var newArray = ([]);
-    setexList(newArray);
-    newElements(newArray);
-    incr(0);
-  };
 
   return (
     <View style={styles.largeContainer}>
@@ -100,18 +81,6 @@ export default function UserExercise({value}) {
           <Button
             title="Add element"
             onPress={addElement} />
-        </View>
-        <View style = {styles.newRoutineButton}>
-          <Button
-            title='Select Routine'
-            onPress={newRoutine}/>
-            <Dialog.Container visible={visible} onBackdropPress={handleCancel}>
-              <Dialog.Title>New Routine</Dialog.Title>
-              <Dialog.Description>Enter a name for your new routine.</Dialog.Description>
-              <Dialog.Input onChangeText={(name)=>newName(name)}/>
-              <Dialog.Button label="Confirm" onPress={handleConfirm}/>  
-              <Dialog.Button label="Cancel" onPress={handleCancel}/>
-            </Dialog.Container>
         </View>
     </View>
   );
@@ -130,11 +99,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   addElementButton: {
-    backgroundColor: '#4c98cf',
-    borderRadius: 10,
-    borderWidth: 1,
-  },
-  newRoutineButton: {
     backgroundColor: '#4c98cf',
     borderRadius: 10,
     borderWidth: 1,

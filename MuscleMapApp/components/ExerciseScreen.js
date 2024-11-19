@@ -40,9 +40,6 @@ export default function ExerciseScreen() {
                 <DropdownComponent styleType={'exercise'} dataExercise={dataExercise} addToList={addToEx}/>
                 <UserExercise value={ex_value} />
             </View>
-            <Button 
-                title="Routine" 
-                onPress={() => navigation.navigate("Routine")}/>
         </View>
     );
 }
